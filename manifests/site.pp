@@ -49,4 +49,9 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
+  file {'/etc/motd':
+    ensure => file,
+    ownership => 'root',
+    content = > "This is my first manifest edit!",
+  )
 }
