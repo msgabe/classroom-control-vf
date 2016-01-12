@@ -4,12 +4,16 @@ class memcached {
     ensure => present,
   }
   file { '/etc/sysconfig/memcached':
-    ensure => present,
+    ensure => file,
+    owner => 'root',
+    group => 'root',
+    mode => '0644',
     source => 'puppet:///modules/memchached/memcached',
     require => Package['memcached'],
   }
   service {'memcached':
     ensure => running,
+    enable => true,
     subscribe => File['/etc/memcached.conf'],
   }
 }
