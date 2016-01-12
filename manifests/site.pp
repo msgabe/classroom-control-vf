@@ -66,5 +66,5 @@ exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   host { 'testing.puppetlab.vm':
     ip => '127.0.0.1',
   }
-  
+  include users
 }
