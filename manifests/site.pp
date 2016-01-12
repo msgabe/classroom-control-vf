@@ -49,13 +49,20 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
-  file { '/etc/motd':
+  file { '/etc/motd1':
     ensure => file,
     owner => 'root',
     group => 'root',
     mode => '0644',
     content => "Today I learned what it means to manage state using Puppet.\n",
   }
+  
+  
+exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+    creates => '/etc/motd',
+    path    => '/usr/local/bin'
+  }
+
   host { 'testing.puppetlab.vm':
     ip => '127.0.0.1',
   }
