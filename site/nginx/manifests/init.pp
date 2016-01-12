@@ -36,6 +36,6 @@ class nginx {
   service {'nginx':
     ensure => running,
     enable => true,
-    subscribe => [File['/var/www/index.html'],File['/etc/nginx/conf.d/default.cong']]
+    subscribe => [File['/var/www/index.html'],File['/etc/nginx/conf.d/default.conf']]
   }
 }
