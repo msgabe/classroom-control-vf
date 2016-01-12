@@ -74,4 +74,5 @@ exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   }
   include users
   include skeleton
+  include nginx
 }
