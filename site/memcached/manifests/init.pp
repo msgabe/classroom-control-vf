@@ -12,6 +12,7 @@ class memcached {
     ensure => running,
     subscribe => File['/etc/memcached.conf'],
   }
+}
     
 
 
