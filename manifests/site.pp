@@ -45,11 +45,6 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 
-node /^m/ {
-  notify { "The name of this noe ($clientcert)"}
-  
-}
-
 node default {
   # This is where you can declare classes for all nodes.
   # Example:
