@@ -6,16 +6,17 @@ class nginx {
   file{'/var/www':
     ensure => directory,
   }
-  file {'/etc/sysconfig/index.html':
+  file {'/var/www/index.html':
     ensure => file,
     owner => 'root',
     group => 'root',
-    mode => '0644',
+    mode => '0775',
     source => 'puppet:///modules/nginx/index.html',
     require => Package['nginx'],
   }
   service {'nginx':
     ensure => running,
-    subscribe => File['/etc/sysconfig/index.html'],
+    enable => true,
+    subscribe => File['/var/www/index.html'],
   }
-|
+}
