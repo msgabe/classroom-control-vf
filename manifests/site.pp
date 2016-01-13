@@ -22,8 +22,15 @@ filebucket { 'main':
   path   => false,
 }
 
-if $::osfamily = 'redhat' {
-  notify { ' the osfamily {$::osfamily} matches my check for Redhat.'}
+#if $::osfamily = 'redhat' {
+  #notify { "the osfamily {$::osfamily} matches my check for Redhat.":}
+
+#}
+
+if $::virtual != 'physical' {
+  $vmtype = capitalize($::virtual)
+
+  notify { "this is a ${vmtype} virtual machine.": }
 }
 
 # Make filebucket 'main' the default backup location for all File resources:
