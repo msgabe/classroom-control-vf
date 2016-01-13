@@ -22,6 +22,10 @@ filebucket { 'main':
   path   => false,
 }
 
+if $::osfamily = 'redhat' {
+  notify { ' the osfamily {$::osfamily} matches my check for Redhat.'}
+}
+
 # Make filebucket 'main' the default backup location for all File resources:
 File { backup => 'main' }
 
