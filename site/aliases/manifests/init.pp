@@ -1,6 +1,6 @@
-class aliases {
-#(    $admin = 'root',) 
-
+class aliases (
+$admin = 'root',
+) {
     # uses $admin to build the aliases file
     file { '/etc/aliases':
         ensure  => file,
