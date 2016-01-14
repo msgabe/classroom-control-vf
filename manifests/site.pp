@@ -92,7 +92,7 @@ exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   include skeleton
   
   class { 'nginx':
-   doc_root => '/var/www'
+   #doc_root => '/var/www'
   }
   
 }
