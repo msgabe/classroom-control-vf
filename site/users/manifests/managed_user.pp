@@ -1,8 +1,11 @@
-define users::managed_user {
+define users::managed_user(
+  $group  = 'root'
+)
+{
   
   user { $title:
     ensure  =>  present,
-    group   =>  'root',
+    group   =>  $group,
   }
   
   file {'/home/${title}':
