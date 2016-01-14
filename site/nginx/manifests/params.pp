@@ -1,4 +1,4 @@
-class params {
+class nginx::params {
 
   case $::osfamily {
       'redhat','debian' : {
