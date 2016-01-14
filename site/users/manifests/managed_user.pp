@@ -1,5 +1,5 @@
 define users::managed_user(
-  $group  = 'root'
+  $group  = 'root',
 )
 {
   
