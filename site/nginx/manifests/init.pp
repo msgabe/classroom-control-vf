@@ -1,5 +1,5 @@
 class nginx (
-  $doc_root = undef,
+  $doc_root = heira('nginx::docroot'),
   $package  = $nginx::params::package,
   $owner    = $nginx::params::owner,
   $group    = $nginx::params::group,
