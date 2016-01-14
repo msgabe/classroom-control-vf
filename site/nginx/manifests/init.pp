@@ -1,6 +1,6 @@
 class nginx (
   $doc_root = undef,
-) inherits nginx::params {
+)  {
     File {
       owner =>  $owner,
       group =>  $group,
