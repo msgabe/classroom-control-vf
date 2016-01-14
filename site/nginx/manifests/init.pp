@@ -1,5 +1,5 @@
 class nginx (
-  #$root = undef,
+  $root = undef,
 )
 { 
   case $::osfamily {
@@ -15,7 +15,7 @@ class nginx (
       $package = 'nginx-service'
       $owner = 'Administrator'
       $group = 'Administrators'
-      $docroot = 'C:/ProgramData/nginx/html'
+      $default_docroot = 'C:/ProgramData/nginx/html'
       $confdir = 'C:/ProgramData/nginx'
     }
     default : {
