@@ -30,7 +30,8 @@ $message = hiera('greeting')
 notify {"this is from hiera: ${message}":}
 
 if $::virtual != 'physical' {
-  $vmtype = capitalize($::virtual)
+  #$vmtype = capitalize($::virtual)
+  $vmtype = $::virtual
 
   notify { "this is a ${vmtype} virtual machine.": }
 }
