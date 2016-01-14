@@ -1,13 +1,16 @@
 class nginx (
   $doc_root = undef,
-)  {
+  $package  = $nginx::params::
+  $owner    = $nginx::params::
+  $group    = $nginx::params::
+  $confdir  = $nginx::params::
+  $logdir   = $nginx::params::
+) inherits nginx::params {
     File {
       owner =>  $owner,
       group =>  $group,
       mode  =>  '0664',
     }
-    
-  
     package{ $package:
       ensure => present,
     }
