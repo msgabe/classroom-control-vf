@@ -1,5 +1,5 @@
 class nginx (
-  $root = undef,
+  $doc_root = undef,
 )
 { 
   case $::osfamily {
@@ -25,8 +25,15 @@ class nginx (
   
   $docroot = $root ? {
     undef   =>  '/var/www',
-    default =>  $root,
+    default =>  $default_docroot,
   }
+  
+  File {
+    owner =>  $owner
+    group =>  $group
+    mode  =>  '0664',
+  }
+  
 
   package{ $package:
     ensure => present,
