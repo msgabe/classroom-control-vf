@@ -54,6 +54,7 @@ File {
   mode => '0644',
 }
 
+include wrappers::powershell
 
 # DEFAULT NODE
 # Node definitions in this file are merged with node data from the console. See
