@@ -48,11 +48,7 @@ class nginx (
     ensure => file,
     content => template('nginx/default.conf.erb'),
     notify => Service[$package],
-    
-    #ensure => file,
-    #content => template('nginx/default.conf.erb',
-    #notify => Service[$package],
-    #require => Package[$package],
+    require => Package[$package],
   }
   service {'nginx':
     ensure => running,
