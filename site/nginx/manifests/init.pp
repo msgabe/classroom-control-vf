@@ -1,27 +1,54 @@
-class nginx { 
+class nginx (
+  #$root = undef,
+)
+{ 
+  case $::osfamily {
+    'redhat','debian' : {
+      $package = 'nginx'
+      $owner = 'root'
+      $group = 'root'
+      $default_docroot = '/var/www'
+      $confdir = '/etc/nginx'
+    
+    }
+    'windows' : {
+      $package = 'nginx-service'
+      $owner = 'Administrator'
+      $group = 'Administrators'
+      $docroot = 'C:/ProgramData/nginx/html'
+      $confdir = 'C:/ProgramData/nginx'
+    }
+    default : {
+      fail("Module ${module_name} is not supported on ${::osfamily}")
+    }
+  }
+  
+  $docroot = $root ? {
+    undef   =>  '/var/www',
+    default =>  $root,
+  }
 
-  package{'nginx':
+  package{ $package:
     ensure => present,
   }
-  file { '/var/www':
+  file { $docroot:
     ensure => directory,
   }
-  file {'/var/www/index.html':
+  file {"${docroot}/index.html":
     ensure => file,
     source => 'puppet:///modules/nginx/index.html',
-    require => Package['nginx'],
   }
-  file { '/etc/nginx/nginx.conf':    
+  file { "${confdir}/nginx.conf":    
     ensure => file,
-    require => Package['nginx'],
-    source => 'puppet:///modules/nginx/nginx.conf',
-    notify => Service['nginx'],
+    content => template('nginx/nginx.conf.erb'),
+    notify => Service[$package],
+    require => Package[$package],
   }
-  file { '/etc/nginx/conf.d/default.conf':
+  file { "${confdir}/conf.d/default.conf":
     ensure => file,
-    source => 'puppet:///modules/nginx/default.conf',
-    require => Package['nginx'],
-    notify => Service['nginx'],
+    content => template('nginx/default.conf.erb',
+    notify => Service[$package],
+    require => Package[$package],
   }
   service {'nginx':
     ensure => running,
