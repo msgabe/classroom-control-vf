@@ -1,4 +1,4 @@
 ---
 greeting: This message came from the common hiera datasource.
-nginx::doc_root: /root
+nginx::docroot: /root
 
