@@ -47,7 +47,7 @@ class nginx (
   file { "${confdir}/conf.d/default.conf":
     ensure => file,
     content => template('nginx/default.conf.erb'),
-    notify => Service['nginx'],
+    notify => Service[$package],
     
     #ensure => file,
     #content => template('nginx/default.conf.erb',
