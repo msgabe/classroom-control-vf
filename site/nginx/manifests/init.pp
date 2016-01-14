@@ -1,10 +1,10 @@
 class nginx (
   $doc_root = undef,
-  $package  = $nginx::params::
-  $owner    = $nginx::params::
-  $group    = $nginx::params::
-  $confdir  = $nginx::params::
-  $logdir   = $nginx::params::
+  $package  = $nginx::params::$package
+  $owner    = $nginx::params::$owner
+  $group    = $nginx::params::$group
+  $confdir  = $nginx::params::$confdir
+  $logdir   = $nginx::params::$logdir
 ) inherits nginx::params {
     File {
       owner =>  $owner,
