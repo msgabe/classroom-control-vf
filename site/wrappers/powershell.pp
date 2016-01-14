@@ -1,3 +1,3 @@
-class forgemodules {
+class powershell {
   include powershell #module name
 }
