@@ -51,7 +51,7 @@ File {
   mode => '0644',
 }
 $message = hiera('greeting')
-notify {"this is from hiera: $message"}
+notify {"this is from hiera: ${message}"}
 
 # DEFAULT NODE
 # Node definitions in this file are merged with node data from the console. See
